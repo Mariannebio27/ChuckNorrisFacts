@@ -1,4 +1,4 @@
-name: Feature/Fix branches CI
+name: General branches CI
 
 on:
   push:
