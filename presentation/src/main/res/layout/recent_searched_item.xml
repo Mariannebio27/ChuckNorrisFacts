@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<TextView
+    android:id="@+id/searched_word_text_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_left_searched_word_text_view_recent_searched_item"
+    android:layout_marginTop="@dimen/margin_top_searched_word_text_view_recent_searched_item"
+    android:layout_marginEnd="20dp"
+    android:fontFamily="@font/fira_sans_semi_bold"
+    android:gravity="center"
+    android:textColor="@color/black"
+    android:textSize="@dimen/text_size_searched_word_text_view_recent_searched_item"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

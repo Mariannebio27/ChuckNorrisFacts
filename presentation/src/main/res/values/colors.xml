@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_2">#FDF6E1</color>
+    <color name="red">#DA3535</color>
+    <color name="orange">#FF5722</color>
+    <color name="grey">#dddddd</color>
+    <color name="blue">#316ff5</color>
+    <color name="light_lilac">#ecebed</color>
+    <color name="yellow">#fae932</color>
+    <color name="chuck_norris_orange">#f15a24</color>
+    <color name="chuck_norris_blue">#2eaae0</color>
+    <color name="chuck_norris_nude">#afa2a0</color>
+</resources>

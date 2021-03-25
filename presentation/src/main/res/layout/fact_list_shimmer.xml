@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_card_view_shimmer_fact_list_fragment"
+    app:cardCornerRadius="@dimen/corner_radius_card_view_shimmer_fact_list_fragment"
+    android:elevation="@dimen/elevation_card_view_shimmer_fact_list_fragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_margin="@dimen/margin_constraint_layout_shimmer_fact_list_fragment">
+
+        <TextView
+            android:id="@+id/value_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_value_text_view_shimmer_fact_list_fragment"
+            android:textColor="@color/black"
+            android:lines="3"
+            android:textSize="@dimen/text_size_value_text_view_shimmer_fact_list_fragment"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/first_category_text_view"
+            android:layout_width="@dimen/width_first_category_text_view_shimmer_fact_list_fragment"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_first_category_text_view_shimmer_fact_list_fragment"
+            android:lines="1"
+            android:background="@color/grey"
+            android:textSize="@dimen/text_size_first_category_text_view_shimmer_fact_list_fragment"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/value_text_view" />
+
+        <ImageView
+            android:id="@+id/share_image_view"
+            android:layout_width="@dimen/width_share_image_view_shimmer_fact_list_fragment"
+            android:layout_height="@dimen/height__share_image_view_shimmer_fact_list_fragment"
+            android:layout_marginTop="@dimen/margin_top__share_image_view_shimmer_fact_list_fragment"
+            android:background="@color/grey"
+            app:layout_constraintBottom_toBottomOf="@+id/first_category_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/value_text_view"
+            app:layout_constraintTop_toTopOf="@+id/first_category_text_view"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

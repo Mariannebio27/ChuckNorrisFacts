@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_top_constraint_layout_shimmer_tag_cloud"
+    android:layout_marginHorizontal="@dimen/margin_horizontal_constraint_layout_shimmer_tag_cloud">
+
+    <TextView
+        android:id="@+id/first_category_text_view"
+        android:layout_width="@dimen/width_first_category_text_view_shimmer_tag_cloud"
+        android:layout_height="wrap_content"
+        android:background="@color/grey"
+        android:layout_marginTop="@dimen/margin_top_first_category_text_view_shimmer_tag_cloud"
+        android:paddingHorizontal="@dimen/padding_horizontal_first_category_text_view_shimmer_tag_cloud"
+        android:lines="1"
+        app:layout_constraintEnd_toStartOf="@+id/second_category_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/second_category_text_view"
+        android:layout_width="@dimen/width_second_category_text_view_shimmer_tag_cloud"
+        android:layout_height="wrap_content"
+        android:background="@color/grey"
+        android:lines="1"
+        android:paddingHorizontal="@dimen/padding_horizontal__second_category_text_view_shimmer_tag_cloud"
+        app:layout_constraintBottom_toBottomOf="@+id/first_category_text_view"
+        app:layout_constraintEnd_toStartOf="@+id/third_category_text_view"
+        app:layout_constraintStart_toEndOf="@+id/first_category_text_view"
+        app:layout_constraintTop_toTopOf="@+id/first_category_text_view" />
+
+    <TextView
+        android:id="@+id/third_category_text_view"
+        android:layout_width="@dimen/width_third_category_text_view_shimmer_tag_cloud"
+        android:layout_height="wrap_content"
+        android:background="@color/grey"
+        android:lines="1"
+        android:paddingHorizontal="@dimen/padding_horizontal_third_category_text_view_shimmer_tag_cloud"
+        app:layout_constraintBottom_toBottomOf="@+id/second_category_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/second_category_text_view"
+        app:layout_constraintTop_toTopOf="@+id/second_category_text_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

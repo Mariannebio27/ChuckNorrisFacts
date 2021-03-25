@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Chuck Norris Facts</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_message_snackbar">Sorry! An error has occurred.</string>
+    <string name="default_empty_message_snackbar">Your search came out empty.</string>
+</resources>
