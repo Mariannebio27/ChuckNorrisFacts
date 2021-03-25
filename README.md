@@ -6,11 +6,12 @@ With this application you can search for Chuck Norris facts. The application use
 
 ## Screens 
  ![Tela de erro](/pictures/welcome_screen.png)
+ ![Tela de erro](/pictures/shimmer_fact_list_screen.png)
  ![Tela de erro](/pictures/fact_list_screen.png)
+ ![Tela de erro](/pictures/shimmer_search_screen.png)
  ![Tela de erro](/pictures/search_screen.png)
  ![Tela de erro](/pictures/empty_error_screen.png)
  ![Tela de erro](/pictures/error_screen.png)
-
 
 ## Automation
 Ktlint - the task validates whether the code standard complies with the lint. Use the `./gradlew ktlint` command to validate.
