@@ -29,18 +29,18 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/corner_radius_card_view_fact_list_item"
             android:backgroundTint="@color/chuck_norris_blue"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/margin_top_category_car_view_fact_list_item"
             android:layout_marginHorizontal="@dimen/margin_horizontal_constraint_layout_tag_cloud_item"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/value_text_view">
+            app:layout_constraintTop_toBottomOf="@id/value_text_view">
 
         <TextView
             android:id="@+id/first_category_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="3dp"
+            android:paddingVertical="@dimen/padding_vertical_first_category_text_view_fact_list_item"
             android:background="@color/chuck_norris_blue"
-            android:paddingHorizontal="10dp"
+            android:paddingHorizontal="@dimen/padding_horizontal_first_category_text_view_fact_list_item"
             android:fontFamily="@font/fira_sans_medium"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_first_category_text_view_fact_list_item"
@@ -55,9 +55,9 @@
             android:layout_width="@dimen/width_share_image_view_fact_list_item"
             android:layout_height="@dimen/height_share_image_view_fact_list_item"
             android:layout_marginTop="@dimen/margin_top_share_image_view_fact_list_item"
-            app:layout_constraintBottom_toBottomOf="@+id/category_card_view"
-            app:layout_constraintEnd_toEndOf="@+id/value_text_view"
-            app:layout_constraintTop_toTopOf="@+id/category_card_view"
+            app:layout_constraintBottom_toBottomOf="@id/category_card_view"
+            app:layout_constraintEnd_toEndOf="@id/value_text_view"
+            app:layout_constraintTop_toTopOf="@id/category_card_view"
             app:srcCompat="@drawable/share_icon_orange" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

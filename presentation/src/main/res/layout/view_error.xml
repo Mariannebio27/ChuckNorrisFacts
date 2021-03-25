@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_lilac"
-    tools:context=".error.ErrorFragment">
+    android:background="@color/light_lilac">
 
 
     <ImageView
-        android:id="@+id/wanted_image_view"
-        android:layout_width="159dp"
-        android:layout_height="181dp"
+        android:id="@+id/dynamite_image_view"
+        android:layout_width="@dimen/width_dynamite_image_view_view_error"
+        android:layout_height="@dimen/height_dynamite_image_view_view_error"
         android:src="@drawable/dynamite_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,15 +17,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/error_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/margin_top_error_text_view_view_error"
         android:text="@string/default_message_snackbar"
         android:fontFamily="@font/fira_sans_semi_bold"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_error_text_view_view_error"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wanted_image_view" />
+        app:layout_constraintTop_toBottomOf="@id/dynamite_image_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

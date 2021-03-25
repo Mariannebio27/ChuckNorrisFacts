@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="@dimen/corner_radius_card_view_fact_list_item"
     android:backgroundTint="@color/chuck_norris_blue"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="@dimen/margin_tocard_view_tag_cloud_item"
     android:layout_marginHorizontal="@dimen/margin_horizontal_constraint_layout_tag_cloud_item">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="@color/chuck_norris_blue"
             android:paddingHorizontal="10dp"
-            android:padding="3dp"
+            android:padding="@dimen/padding_first_category_text_view_tag_cloud_item"
             android:ellipsize="end"
             android:fontFamily="@font/fira_sans_medium"
             android:gravity="center"
@@ -34,3 +34,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
+

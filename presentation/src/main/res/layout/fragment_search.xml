@@ -10,18 +10,18 @@
         android:id="@+id/text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_text_input_layout_fragment_search"
+        android:layout_marginTop="@dimen/margin_top_text_input_layout_fragment_search"
         android:textColorHint="@color/black"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusBottomEnd="@dimen/corner_radius_text_input_layout_fragment_search"
+        app:boxCornerRadiusBottomStart="@dimen/corner_radius_text_input_layout_fragment_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search_text_input_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/height_search_text_input_edit_text_fragment_search"
             android:background="@color/white"
             android:fontFamily="@font/fira_sans_semi_bold"
             android:gravity="center"
@@ -29,9 +29,9 @@
             android:imeOptions="actionDone"
             android:inputType="text"
             android:singleLine="true"
-            android:textColor="@color/orange"
-            android:textColorHint="@color/orange"
-            android:textSize="22sp" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/text_size_search_text_input_edit_text_fragment_search" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,7 +43,7 @@
         android:backgroundTint="@color/orange"
         android:text="@string/text_search_button_fragment_search"
         android:textColor="@color/white"
-        app:cornerRadius="4dp"
+        app:cornerRadius="@dimen/corner_radius_search_button_fragment_search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -57,7 +57,7 @@
         android:gravity="center"
         android:text="@string/suggestions"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_category_text_view_fragment_search"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +67,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tag_cloud_recycler_view"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:paddingHorizontal="16dp"
+        android:layout_marginTop="@dimen/margin_top_tag_cloud_recycler_view_fragment_search"
+        android:paddingHorizontal="@dimen/padding_horizontal__tag_cloud_recycler_view_fragment_search"
         android:layout_height="@dimen/height_tag_cloud_recycler_view_fragment_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,17 +79,17 @@
         android:id="@+id/searched_words_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/margin_top_searched_words_text_view_fragment_search"
         android:fontFamily="@font/fira_sans_medium"
         android:gravity="center"
         android:text="@string/latest_searches"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_searched_words_text_view_fragment_search"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/searched_words_card_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tag_cloud_recycler_view"
-        app:layout_constraintTop_toBottomOf="@+id/tag_cloud_recycler_view" />
+        app:layout_constraintTop_toBottomOf="@id/tag_cloud_recycler_view" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/searched_words_card_view"
@@ -97,7 +97,7 @@
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin_card_view_fact_list_item"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_top_searched_words_card_view_fragment_search"
         android:layout_marginBottom="@dimen/margin_bottom_recent_searched_recycler_view_fragment_search"
         android:background="@color/white"
         android:elevation="@dimen/elevation_card_view_fact_list_item"
@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:elevation="5dp"
+            android:elevation="@dimen/elevation_recent_searched_recycler_view_fragment_search"
             app:layout_constraintBottom_toBottomOf="@id/searched_words_card_view"
             app:layout_constraintBottom_toTopOf="@id/search_button"
             app:layout_constraintEnd_toEndOf="parent"
