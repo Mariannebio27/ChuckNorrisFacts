@@ -1,7 +1,6 @@
 package com.mariannecunha.presentation.factlist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.mariannecunha.core.extensions.hide
-import com.mariannecunha.core.extensions.model.SnackbarProperties
 import com.mariannecunha.core.extensions.show
-import com.mariannecunha.core.extensions.showSnackbar
 import com.mariannecunha.domain.model.Fact
 import com.mariannecunha.presentation.R
 import org.koin.android.ext.android.inject
@@ -27,6 +24,8 @@ class FactListFragment : Fragment() {
     private lateinit var factListRecyclerView: RecyclerView
     private lateinit var layoutManager: LinearLayoutManager
     private val shimmerFrameLayout by lazy { view?.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container) }
+    private lateinit var errorView: View
+    private lateinit var emptyErrorView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +47,13 @@ class FactListFragment : Fragment() {
 
         setUpShimmer()
         setUpRecyclerView(view)
+        setUpErrorViews(view)
         setUpObserver()
+    }
+
+    private fun setUpErrorViews(view: View) {
+        errorView = view.findViewById<View>(R.id.error_view)
+        emptyErrorView = view.findViewById<View>(R.id.empty_error_view)
     }
 
     override fun onResume() {
@@ -94,27 +99,25 @@ class FactListFragment : Fragment() {
     }
 
     private fun onSuccess(factList: List<Fact>) {
-        Log.d("AAAAA", "onSuccess")
-        shimmerFrameLayout?.hide()
-        factListRecyclerView.visibility = View.VISIBLE
         adapter.updateFacts(factList)
+        shimmerFrameLayout?.hide()
+        factListRecyclerView.show()
+        errorView.hide()
+        emptyErrorView.hide()
     }
 
     private fun onEmptySuccess() {
-        Log.d("AAAAA", "onEmptySuccess")
-        val properties = SnackbarProperties(
-            textResId = R.string.default_empty_message_snackbar,
-            backgroundResId = R.color.orange
-        )
-
         shimmerFrameLayout?.hide()
-        view?.showSnackbar(properties)
+        factListRecyclerView.hide()
+        errorView.hide()
+        emptyErrorView.show()
     }
 
     private fun onError() {
-        Log.d("AAAAA", "onError")
         shimmerFrameLayout?.hide()
-        view?.showSnackbar()
+        factListRecyclerView.hide()
+        emptyErrorView.hide()
+        errorView.show()
     }
 
     companion object {

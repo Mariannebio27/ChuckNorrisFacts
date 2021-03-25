@@ -45,4 +45,18 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
+    <include
+        layout="@layout/view_empty_error"
+        android:id="@+id/empty_error_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/view_error"
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

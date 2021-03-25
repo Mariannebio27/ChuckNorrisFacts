@@ -39,3 +39,11 @@ private fun Snackbar.applyBackground(backgroundResId: Int): Snackbar {
 }
 
 private fun Snackbar.getTextView() = this.view.findViewById(R.id.snackbar_text) as TextView
+
+fun View?.show() {
+    this?.visibility = View.VISIBLE
+}
+
+fun View?.hide() {
+    this?.visibility = View.GONE
+}

@@ -10,11 +10,8 @@ class FactRepositoryImpl(private val service: FactService) : FactRepository {
 
     override suspend fun fetchFacts(query: String?): SuspendableResult<GlobalFacts, Exception> {
 
-        val result: SuspendableResult<GlobalFacts, Exception> =
-            SuspendableResult.of {
-                service.fetchFacts(query = query)
-            }
-
-        return result
+        return SuspendableResult.of {
+            service.fetchFacts(query = query)
+        }
     }
 }

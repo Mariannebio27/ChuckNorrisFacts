@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,7 +15,6 @@ class WelcomeFragment : Fragment() {
 
     private lateinit var chuckNorrisImageView: ImageView
     private val _clickLiveData = MutableLiveData<Unit>()
-    private lateinit var titleTextView: TextView
     val clickLiveData: LiveData<Unit> = _clickLiveData
 
     override fun onCreateView(
@@ -49,7 +47,6 @@ class WelcomeFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() =
-            WelcomeFragment()
+        fun newInstance() = WelcomeFragment()
     }
 }
