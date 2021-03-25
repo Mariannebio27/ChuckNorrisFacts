@@ -4,6 +4,14 @@
 ## Resume 
 With this application you can search for Chuck Norris facts. The application uses an API to perform the searches [chucknorris.io]( https://chucknorris.io/).
 
+## Screens 
+ ![Tela de erro](/pictures/welcome_screen.png)
+ ![Tela de erro](/pictures/fact_list_screen.png)
+ ![Tela de erro](/pictures/search_screen.png)
+ ![Tela de erro](/pictures/empty_error_screen.png)
+ ![Tela de erro](/pictures/error_screen.png)
+
+
 ## Automation
 Ktlint - the task validates whether the code standard complies with the lint. Use the `./gradlew ktlint` command to validate.
 
