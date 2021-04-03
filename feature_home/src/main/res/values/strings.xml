@@ -1,0 +1,5 @@
+<resources>
+    <string name="title_action_search_my_navigation_items">Search</string>
+    <string name="title_action_home_my_navigation_items">Home</string>
+    <string name="empty_search_message">Your search returned empty!</string>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="hint_search_text_input_edit_text_fragment_search">Search for facts</string>
+    <string name="text_search_button_fragment_search">Search</string>
+    <string name="empty_search_message">Your search returned empty!</string>
+</resources>

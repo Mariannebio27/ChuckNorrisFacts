@@ -1,6 +1,10 @@
+include ':shared'
+include ':resource'
+include ':feature_fact_list'
+include ':feature_search'
+include ':feature_home'
 include ':core'
 include ':domain'
 include ':data'
-include ':presentation'
 include ':app'
 rootProject.name = "Chuck Norris Facts"

@@ -4,7 +4,8 @@ import android.app.Application
 import com.mariannecunha.chucknorrisfacts.BuildConfig
 import com.mariannecunha.data.di.dataModule
 import com.mariannecunha.domain.di.domainModule
-import com.mariannecunha.presentation.di.presentationModule
+import com.mariannecunha.factlist.di.factListModule
+import com.mariannecunha.search.di.searchModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin
@@ -25,7 +26,8 @@ class Application : Application() {
             logger(setupDependencyInjectionLogger())
             modules(
                 listOf(
-                    presentationModule,
+                    searchModule,
+                    factListModule,
                     dataModule,
                     domainModule
                 )

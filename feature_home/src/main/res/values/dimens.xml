@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_wanted_image_view_view_empty_error">159dp</dimen>
+    <dimen name="height_wanted_image_view_view_empty_error">181dp</dimen>
+    <dimen name="text_size_empty_error_text_view_view_empty_error">20sp</dimen>
+    <dimen name="margin_top_empty_error_text_view_view_empty_error">40dp</dimen>
+    <dimen name="margin_top_error_text_view_view_error">40dp</dimen>
+    <dimen name="text_size_error_text_view_view_error">20sp</dimen>
+    <dimen name="width_dynamite_image_view_view_error">159dp</dimen>
+    <dimen name="height_dynamite_image_view_view_error">181dp</dimen>
+</resources>
