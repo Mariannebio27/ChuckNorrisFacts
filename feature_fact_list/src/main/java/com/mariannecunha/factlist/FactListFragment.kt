@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
@@ -17,8 +19,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FactListFragment : Fragment() {
 
+    private val args: FactListFragmentArgs by navArgs()
     private val viewModel by viewModel<FactListViewModel>()
-    private val adapter by inject<com.mariannecunha.factlist.FactListAdapter>()
+    private val adapter by inject<FactListAdapter>()
     private var searchSentence: String? = null
     private lateinit var factListRecyclerView: RecyclerView
     private lateinit var layoutManager: LinearLayoutManager
@@ -26,11 +29,18 @@ class FactListFragment : Fragment() {
     private lateinit var errorView: View
     private lateinit var emptyErrorView: View
 
+    private var lastSearch = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            searchSentence = it.getString(SEARCH_SENTENCE)
+
+        args.searchText?.let {
+            lastSearch = it
+            searchSentence = it
+        } ?: kotlin.run {
+            searchSentence = lastSearch
         }
+
     }
 
     override fun onCreateView(

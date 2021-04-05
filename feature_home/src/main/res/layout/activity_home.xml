@@ -4,9 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
+        app:defaultNavHost="true"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/menu_bottom_navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/my_navigation_items"/>
+        app:menu="@menu/home_bottom_menu"/>
 
 
 

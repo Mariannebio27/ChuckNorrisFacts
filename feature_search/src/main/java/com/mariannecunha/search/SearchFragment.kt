@@ -7,24 +7,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.NavAction
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mariannecunha.core.livedata.SingleEventLiveData
 import com.mariannecunha.search.databinding.FragmentSearchBinding
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class SearchFragment : Fragment() {
 
-    private val viewModel by viewModel<SearchViewModel>()
-    private val _clickSearchLiveData = SingleEventLiveData<String>()
-    val clickSearchLiveData: LiveData<String> = _clickSearchLiveData
+    private val viewModel by sharedViewModel<SearchViewModel>()
     private val tagCloudAdapter by inject<SearchListAdapter> {
-        parametersOf(_clickSearchLiveData)
+        parametersOf ({ searchText: String -> onSearchClick(searchText)})
     }
-    private val searchedWordAdapter by inject<com.mariannecunha.search.SearchedWordsListAdapter>() {
-        parametersOf(_clickSearchLiveData)
+    private val searchedWordAdapter by inject<SearchedWordsListAdapter>() {
+        parametersOf({ searchText: String -> onSearchClick(searchText)})
     }
     lateinit var binding: FragmentSearchBinding
 
@@ -78,7 +80,7 @@ class SearchFragment : Fragment() {
             val searchSentence = searchTextInputEditText.text.toString()
 
             if (searchSentence.isNotEmpty()) {
-                _clickSearchLiveData.postValue(searchSentence)
+                onSearchClick(searchSentence)
             }
         }
     }
@@ -108,7 +110,7 @@ class SearchFragment : Fragment() {
         )
     }
 
-    companion object {
-        fun newInstance() = SearchFragment()
+    private fun onSearchClick(searchText: String) {
+        viewModel.onSearchClick(searchText)
     }
 }

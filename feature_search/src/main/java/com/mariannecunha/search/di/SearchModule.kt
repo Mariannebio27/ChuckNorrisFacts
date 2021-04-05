@@ -16,11 +16,11 @@ val searchModule = module {
         )
     }
 
-    factory { (liveData: SingleEventLiveData<String>) ->
-        com.mariannecunha.search.SearchListAdapter(liveData)
+    factory { (onSearchClick: (String) -> (Unit)) ->
+        com.mariannecunha.search.SearchListAdapter(onSearchClick)
     }
 
-    factory { (liveData: SingleEventLiveData<String>) ->
-        com.mariannecunha.search.SearchedWordsListAdapter(liveData)
+    factory { (onSearchClick: (String) -> (Unit)) ->
+        com.mariannecunha.search.SearchedWordsListAdapter(onSearchClick)
     }
 }

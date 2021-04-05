@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_home"
+
+    <item android:id="@+id/fact_list_navigations_graph"
         android:title="@string/title_action_home_my_navigation_items"
         android:icon="@drawable/home_icon" />
-    <item android:id="@+id/action_search"
+
+    <item android:id="@+id/search_fragment"
         android:title="@string/title_action_search_my_navigation_items"
         android:icon="@drawable/search_icon" />
+
 </menu>

@@ -5,10 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.mariannecunha.core.livedata.SingleEventLiveData
 
 
-class SearchedWordsListAdapter(private val _clickSearchLiveData: SingleEventLiveData<String>) :
+class SearchedWordsListAdapter(private val onSearchClick: (String) -> Unit) :
     RecyclerView.Adapter<SearchedWordsListAdapter.SearchedWordsListViewHolder>() {
 
     private val words = mutableListOf<String>()
@@ -38,7 +37,7 @@ class SearchedWordsListAdapter(private val _clickSearchLiveData: SingleEventLive
     }
 
     override fun onBindViewHolder(holder: SearchedWordsListViewHolder, position: Int) {
-        holder.itemBind(words[position], _clickSearchLiveData)
+        holder.itemBind(words[position], onSearchClick)
     }
 
     class SearchedWordsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,20 +45,20 @@ class SearchedWordsListAdapter(private val _clickSearchLiveData: SingleEventLive
         private val searchedWordTextView =
             itemView.findViewById<TextView>(R.id.searched_word_text_view)
 
-        fun itemBind(word: String, _clickSearchLiveData: SingleEventLiveData<String>) {
+        fun itemBind(word: String, onSearchClick: (String) -> Unit) {
 
             searchedWordTextView.text = word
 
-            setUpClickWord(word, _clickSearchLiveData)
+            setUpClickWord(word, onSearchClick)
         }
 
         private fun setUpClickWord(
             word: String,
-            _clickSearchLiveData: SingleEventLiveData<String>
+            onSearchClick: (String) -> Unit
         ) {
 
             itemView.setOnClickListener {
-                _clickSearchLiveData.postValue(word)
+                onSearchClick.invoke(word)
             }
         }
     }

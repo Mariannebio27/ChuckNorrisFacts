@@ -3,10 +3,9 @@ package com.mariannecunha.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mariannecunha.core.livedata.SingleEventLiveData
 import com.mariannecunha.search.databinding.TagCloudItemBinding
 
-class SearchListAdapter(private val _clickSearchLiveData: SingleEventLiveData<String>) : RecyclerView.Adapter<SearchListAdapter.SearchListViewHolder>() {
+class SearchListAdapter(private val onSearchClick: (String) -> Unit) : RecyclerView.Adapter<SearchListAdapter.SearchListViewHolder>() {
 
     private val categories = mutableListOf<String>()
 
@@ -36,22 +35,25 @@ class SearchListAdapter(private val _clickSearchLiveData: SingleEventLiveData<St
     }
 
     override fun onBindViewHolder(holder: SearchListViewHolder, position: Int) {
-        holder.itemBind(categories[position], _clickSearchLiveData)
+        holder.itemBind(categories[position], onSearchClick)
     }
 
     class SearchListViewHolder(private val binding: TagCloudItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun itemBind(category: String, _clickSearchLiveData: SingleEventLiveData<String>) {
+        fun itemBind(category: String, onSearchClick: (String) -> Unit) {
 
             binding.firstCategoryTextView.text = category.toUpperCase()
 
-            setUpClickCategory(category, _clickSearchLiveData)
+            setUpClickCategory(category, onSearchClick)
         }
 
-        private fun setUpClickCategory(category: String, _clickSearchLiveData: SingleEventLiveData<String>) {
+        private fun setUpClickCategory(
+            category: String,
+            onSearchClick: (String) -> Unit
+        ) {
 
             itemView.setOnClickListener {
-                _clickSearchLiveData.postValue(category)
+                onSearchClick.invoke(category)
             }
         }
     }
