@@ -8,11 +8,12 @@ import com.github.kittinunf.result.coroutines.SuspendableResult
 import com.mariannecunha.domain.model.Fact
 import com.mariannecunha.domain.model.GlobalFacts
 import com.mariannecunha.domain.usecase.FetchFacts
+import com.mariannecunha.domain.usecase.GetWords
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class FactListViewModel(private val fetchFacts: FetchFacts) : ViewModel() {
+class FactListViewModel(private val fetchFacts: FetchFacts, private val getWords: GetWords) : ViewModel() {
 
     private val _successLiveData = MutableLiveData<List<Fact>>()
     val successLiveData: LiveData<List<Fact>> = _successLiveData
@@ -21,8 +22,9 @@ class FactListViewModel(private val fetchFacts: FetchFacts) : ViewModel() {
     private val _errorLiveData = MutableLiveData<Unit>()
     val errorLiveData: LiveData<Unit> = _errorLiveData
 
-    fun getFacts(query: String?) {
+    fun getFacts() {
         viewModelScope.launch(Dispatchers.IO) {
+            val query = getWords.invoke().first()
             val response = fetchFacts(query)
             handleResponse(response)
         }

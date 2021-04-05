@@ -29,6 +29,7 @@ class SearchFragment : Fragment() {
         parametersOf({ searchText: String -> onSearchClick(searchText)})
     }
     lateinit var binding: FragmentSearchBinding
+    private var searchText: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,6 +54,7 @@ class SearchFragment : Fragment() {
         super.onResume()
 
         val words = viewModel.getWordList()
+//        searchText = words.subList(0,1).toString()
         searchedWordAdapter.updateWords(words)
     }
 
@@ -111,6 +113,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun onSearchClick(searchText: String) {
-        viewModel.onSearchClick(searchText)
+        viewModel.saveWords(searchText)
+        viewModel.onSearchClick()
     }
 }

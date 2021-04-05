@@ -9,10 +9,5 @@
         android:id="@+id/fact_list_fragment"
         android:name="com.mariannecunha.factlist.FactListFragment"
         tools:layout="@layout/fragment_fact_list">
-        <argument
-            android:name="search_text"
-            app:argType="string"
-            android:defaultValue="@null"
-            app:nullable="true" />
     </fragment>
 </navigation>

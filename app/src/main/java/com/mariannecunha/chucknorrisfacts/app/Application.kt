@@ -5,6 +5,7 @@ import com.mariannecunha.chucknorrisfacts.BuildConfig
 import com.mariannecunha.data.di.dataModule
 import com.mariannecunha.domain.di.domainModule
 import com.mariannecunha.factlist.di.factListModule
+import com.mariannecunha.home.di.welcomeModule
 import com.mariannecunha.search.di.searchModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
@@ -29,7 +30,8 @@ class Application : Application() {
                     searchModule,
                     factListModule,
                     dataModule,
-                    domainModule
+                    domainModule,
+                    welcomeModule
                 )
             )
         }

@@ -2,23 +2,19 @@ package com.mariannecunha.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.mariannecunha.home.databinding.ActivityHomeBinding
-import com.mariannecunha.search.SearchFragment
 import com.mariannecunha.search.SearchFragmentDirections
 import com.mariannecunha.search.SearchViewModel
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
     private val searchViewModel: SearchViewModel by viewModel()
+    private val welcomeViewModel: WelcomeViewModel by viewModel()
     private lateinit var binding: ActivityHomeBinding
     private lateinit var navController: NavController
 
@@ -33,8 +29,11 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setUpObservers() {
-        searchViewModel.clickSearchLiveData.observe(this@HomeActivity, Observer { searchText ->
-            navController.navigate(SearchFragmentDirections.actionSearchFragmentToFactListFragment(searchText))
+        searchViewModel.clickSearchLiveData.observe(this@HomeActivity, Observer {
+            navController.navigate(SearchFragmentDirections.actionSearchFragmentToFactListFragment())
+        })
+        welcomeViewModel.clickLiveData.observe(this@HomeActivity, Observer {
+            navController.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSearchFragment())
         })
     }
 

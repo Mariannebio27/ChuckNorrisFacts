@@ -13,8 +13,7 @@ val domainModule = module {
 
     factory {
         FetchFacts(
-            get<FactRepository>(),
-            get<SaveWords>()
+            get<FactRepository>()
         )
     }
 

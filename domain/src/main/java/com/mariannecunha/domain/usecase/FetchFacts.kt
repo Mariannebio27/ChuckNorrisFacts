@@ -5,10 +5,9 @@ import com.mariannecunha.domain.model.GlobalFacts
 import com.mariannecunha.domain.repository.FactRepository
 import java.lang.Exception
 
-class FetchFacts(private val facts: FactRepository, private val saveWords: SaveWords) {
+class FetchFacts(private val facts: FactRepository) {
 
     suspend operator fun invoke(query: String?): SuspendableResult<GlobalFacts, Exception> {
-        saveWords(query)
         return facts.fetchFacts(query)
     }
 }

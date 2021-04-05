@@ -19,7 +19,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FactListFragment : Fragment() {
 
-    private val args: FactListFragmentArgs by navArgs()
     private val viewModel by viewModel<FactListViewModel>()
     private val adapter by inject<FactListAdapter>()
     private var searchSentence: String? = null
@@ -28,20 +27,6 @@ class FactListFragment : Fragment() {
     private val shimmerFrameLayout by lazy { view?.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container) }
     private lateinit var errorView: View
     private lateinit var emptyErrorView: View
-
-    private var lastSearch = ""
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        args.searchText?.let {
-            lastSearch = it
-            searchSentence = it
-        } ?: kotlin.run {
-            searchSentence = lastSearch
-        }
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,7 +53,7 @@ class FactListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.getFacts(searchSentence)
+        viewModel.getFacts()
     }
 
     private fun setUpRecyclerView(view: View) {
