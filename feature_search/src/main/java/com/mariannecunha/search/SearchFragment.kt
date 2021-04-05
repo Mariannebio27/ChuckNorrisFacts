@@ -5,14 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.navigation.NavAction
-import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mariannecunha.core.livedata.SingleEventLiveData
 import com.mariannecunha.search.databinding.FragmentSearchBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -23,10 +18,10 @@ class SearchFragment : Fragment() {
 
     private val viewModel by sharedViewModel<SearchViewModel>()
     private val tagCloudAdapter by inject<SearchListAdapter> {
-        parametersOf ({ searchText: String -> onSearchClick(searchText)})
+        parametersOf({ searchText: String -> onSearchClick(searchText) })
     }
     private val searchedWordAdapter by inject<SearchedWordsListAdapter>() {
-        parametersOf({ searchText: String -> onSearchClick(searchText)})
+        parametersOf({ searchText: String -> onSearchClick(searchText) })
     }
     lateinit var binding: FragmentSearchBinding
     private var searchText: String? = null
@@ -72,7 +67,7 @@ class SearchFragment : Fragment() {
         binding.searchTextInputEditText.text?.clear()
     }
 
-    private fun setUpShimmer() = with(binding.shimmerViewContainer){
+    private fun setUpShimmer() = with(binding.shimmerViewContainer) {
         visibility = View.VISIBLE
         startShimmer()
     }

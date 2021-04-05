@@ -3,18 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation_graph"
-    app:startDestination="@id/welcome_fragment">
+    app:startDestination="@id/fact_list_navigations_graph">
 
     <include app:graph="@navigation/fact_list_navigations_graph"/>
-
-    <fragment
-        android:id="@+id/welcome_fragment"
-        android:name="com.mariannecunha.home.WelcomeFragment"
-        tools:layout="@layout/fragment_welcome">
-        <action
-            android:id="@+id/action_welcome_fragment_to_search_fragment"
-            app:destination="@id/search_fragment"/>
-    </fragment>
 
     <fragment
         android:id="@+id/search_fragment"
@@ -23,9 +14,6 @@
         <action
             android:id="@+id/action_search_fragment_to_fact_list_fragment"
             app:destination="@id/fact_list_navigations_graph"/>
-        <action
-            android:id="@+id/action_search_fragment_to_welcome_fragment"
-            app:destination="@id/welcome_fragment"/>
     </fragment>
 
 

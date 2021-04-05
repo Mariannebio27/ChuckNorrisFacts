@@ -21,10 +21,16 @@ class FactListViewModel(private val fetchFacts: FetchFacts, private val getWords
     val emptySuccessLiveData: LiveData<Unit> = _emptySuccessLiveData
     private val _errorLiveData = MutableLiveData<Unit>()
     val errorLiveData: LiveData<Unit> = _errorLiveData
+    private val _welcomeLiveData = MutableLiveData<Unit>()
+    val welcomeLiveData: LiveData<Unit> = _welcomeLiveData
 
     fun getFacts() {
         viewModelScope.launch(Dispatchers.IO) {
             val query = getWords.invoke().first()
+            if (query.isEmpty()) {
+                _welcomeLiveData.postValue(Unit)
+                return@launch
+            }
             val response = fetchFacts(query)
             handleResponse(response)
         }

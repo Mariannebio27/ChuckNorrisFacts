@@ -14,7 +14,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeActivity : AppCompatActivity() {
 
     private val searchViewModel: SearchViewModel by viewModel()
-    private val welcomeViewModel: WelcomeViewModel by viewModel()
     private lateinit var binding: ActivityHomeBinding
     private lateinit var navController: NavController
 
@@ -29,12 +28,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setUpObservers() {
-        searchViewModel.clickSearchLiveData.observe(this@HomeActivity, Observer {
-            navController.navigate(SearchFragmentDirections.actionSearchFragmentToFactListFragment())
-        })
-        welcomeViewModel.clickLiveData.observe(this@HomeActivity, Observer {
-            navController.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSearchFragment())
-        })
+        searchViewModel.clickSearchLiveData.observe(
+            this@HomeActivity,
+            Observer {
+                navController.navigate(SearchFragmentDirections.actionSearchFragmentToFactListFragment())
+            }
+        )
     }
 
     private fun setUpNavigation() {

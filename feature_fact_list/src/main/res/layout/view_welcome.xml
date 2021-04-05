@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/chuck_norris_image_view"
-        android:layout_width="@dimen/width_chuck_norris_image_view_fragment_click_search"
-        android:layout_height="@dimen/height_chuck_norris_image_view_fragment_click_search"
+        android:layout_width="@dimen/width_chuck_norris_image_view"
+        android:layout_height="@dimen/height_chuck_norris_image_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

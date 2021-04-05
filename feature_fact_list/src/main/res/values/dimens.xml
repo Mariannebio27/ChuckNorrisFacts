@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="width_chuck_norris_image_view">350dp</dimen>
+    <dimen name="height_chuck_norris_image_view">350dp</dimen>
     <dimen name="height_menu_bottom_navigation_view_activity_fact_list">56dp</dimen>
     <dimen name="margin_card_view_shimmer_fact_list_fragment">10dp</dimen>
     <dimen name="corner_radius_card_view_shimmer_fact_list_fragment">8dp</dimen>

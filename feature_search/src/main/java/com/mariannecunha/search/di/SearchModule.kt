@@ -1,6 +1,5 @@
 package com.mariannecunha.search.di
 
-import com.mariannecunha.core.livedata.SingleEventLiveData
 import com.mariannecunha.domain.usecase.FetchCategories
 import com.mariannecunha.domain.usecase.GetWords
 import com.mariannecunha.domain.usecase.SaveWords
