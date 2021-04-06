@@ -3,12 +3,11 @@ package com.mariannecunha.factlist
 import android.content.Intent
 import android.util.TypedValue
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mariannecunha.domain.model.Fact
+import com.mariannecunha.factlist.databinding.FactListItemBinding
 import java.util.Locale
 
 class FactListAdapter() : RecyclerView.Adapter<FactListAdapter.FactListViewHolder>() {
@@ -22,12 +21,10 @@ class FactListAdapter() : RecyclerView.Adapter<FactListAdapter.FactListViewHolde
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FactListViewHolder {
-        val itemView: View =
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.fact_list_item, parent, false)
+        val binding = FactListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return FactListViewHolder(
-            itemView
+            binding
         )
     }
 
@@ -39,19 +36,15 @@ class FactListAdapter() : RecyclerView.Adapter<FactListAdapter.FactListViewHolde
         holder.itemBind(facts[position])
     }
 
-    class FactListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class FactListViewHolder(private val binding: FactListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        private val factCategories = itemView.findViewById<TextView>(R.id.first_category_text_view)
-        private val factText = itemView.findViewById<TextView>(R.id.value_text_view)
-        private val factShare = itemView.findViewById<ImageView>(R.id.share_image_view)
+        fun itemBind(facts: Fact) = with(binding) {
 
-        fun itemBind(facts: Fact) {
-
-            factText.text = facts.value
-            factCategories.text = getCategories(facts)
+            valueTextView.text = facts.value
+            firstCategoryTextView.text = getCategories(facts)
 
             setUpShare(facts)
-            handleTextSize(factText)
+            handleTextSize(valueTextView)
         }
 
         private fun getCategories(facts: Fact): String {
@@ -63,7 +56,7 @@ class FactListAdapter() : RecyclerView.Adapter<FactListAdapter.FactListViewHolde
         }
 
         private fun setUpShare(facts: Fact) {
-            factShare.setOnClickListener {
+            binding.shareImageView.setOnClickListener {
                 val i = Intent(Intent.ACTION_SEND)
                 i.type = "text/plain"
                 i.putExtra(Intent.EXTRA_SUBJECT, "Sharing URL")

@@ -1,10 +1,9 @@
 package com.mariannecunha.search
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.mariannecunha.search.databinding.RecentSearchedItemBinding
 
 class SearchedWordsListAdapter(private val onSearchClick: (String) -> Unit) :
     RecyclerView.Adapter<SearchedWordsListAdapter.SearchedWordsListViewHolder>() {
@@ -22,12 +21,10 @@ class SearchedWordsListAdapter(private val onSearchClick: (String) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchedWordsListViewHolder {
-        val itemView: View =
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.recent_searched_item, parent, false)
+        val binding = RecentSearchedItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return SearchedWordsListViewHolder(
-            itemView
+            binding
         )
     }
 
@@ -39,14 +36,11 @@ class SearchedWordsListAdapter(private val onSearchClick: (String) -> Unit) :
         holder.itemBind(words[position], onSearchClick)
     }
 
-    class SearchedWordsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val searchedWordTextView =
-            itemView.findViewById<TextView>(R.id.searched_word_text_view)
+    class SearchedWordsListViewHolder(private val binding: RecentSearchedItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun itemBind(word: String, onSearchClick: (String) -> Unit) {
 
-            searchedWordTextView.text = word
+            binding.searchedWordTextView.text = word
 
             setUpClickWord(word, onSearchClick)
         }

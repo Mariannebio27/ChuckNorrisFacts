@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.mariannecunha.core.extensions.hide
 import com.mariannecunha.core.extensions.show
 import com.mariannecunha.domain.model.Fact
+import com.mariannecunha.factlist.databinding.FragmentFactListBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,14 +19,7 @@ class FactListFragment : Fragment() {
 
     private val viewModel by viewModel<FactListViewModel>()
     private val adapter by inject<FactListAdapter>()
-    private var searchSentence: String? = null
-    private lateinit var factListRecyclerView: RecyclerView
-    private lateinit var layoutManager: LinearLayoutManager
-    private val shimmerFrameLayout by lazy { view?.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container) }
-    private lateinit var errorView: View
-    private lateinit var welcomeView: View
-    private lateinit var emptyErrorView: View
-    private lateinit var chuckNorrisImageView: ImageView
+    lateinit var binding: FragmentFactListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,25 +32,17 @@ class FactListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpBinding(view)
         setUpShimmer()
-        setUpRecyclerView(view)
-        setUpErrorViews(view)
+        setUpRecyclerView()
         setUpObserver()
         setUpImageView(view)
     }
 
-    private fun setUpErrorViews(view: View) {
-        errorView = view.findViewById<View>(R.id.error_view)
-        emptyErrorView = view.findViewById<View>(R.id.empty_error_view)
-        welcomeView = view.findViewById<View>(R.id.welcome_view)
-    }
-
     private fun setUpImageView(view: View) {
-        chuckNorrisImageView = view.findViewById(R.id.chuck_norris_image_view)
-
         Glide.with(view.context)
             .load("https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png")
-            .into(chuckNorrisImageView)
+            .into(binding.welcomeView.chuckNorrisImageView)
     }
 
     override fun onResume() {
@@ -68,13 +51,16 @@ class FactListFragment : Fragment() {
         viewModel.getFacts()
     }
 
-    private fun setUpRecyclerView(view: View) {
-        factListRecyclerView = view.findViewById(R.id.facts_recycler_view)
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    private fun setUpBinding(view: View) {
+        binding = FragmentFactListBinding.bind(view)
+    }
 
-        factListRecyclerView.setHasFixedSize(true)
-        factListRecyclerView.layoutManager = layoutManager
-        factListRecyclerView.adapter = adapter
+    private fun setUpRecyclerView() = with(binding) {
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        factsRecyclerView.setHasFixedSize(true)
+        factsRecyclerView.layoutManager = layoutManager
+        factsRecyclerView.adapter = adapter
     }
 
     private fun setUpObserver() {
@@ -108,51 +94,39 @@ class FactListFragment : Fragment() {
     }
 
     private fun setUpShimmer() {
-        shimmerFrameLayout?.show()
+        binding.shimmerViewContainer.show()
     }
 
-    private fun onSuccess(factList: List<Fact>) {
+    private fun onSuccess(factList: List<Fact>) = with(binding) {
         adapter.updateFacts(factList)
-        shimmerFrameLayout?.hide()
-        errorView.hide()
-        welcomeView.hide()
-        emptyErrorView.hide()
-        factListRecyclerView.show()
+        shimmerViewContainer.hide()
+        errorView.errorLayout.hide()
+        welcomeView.welcomeLayout.hide()
+        emptyErrorView.emptyErrorLayout.hide()
+        factsRecyclerView.show()
     }
 
-    private fun onEmptySuccess() {
-        shimmerFrameLayout?.hide()
-        factListRecyclerView.hide()
-        errorView.hide()
-        welcomeView.hide()
-        emptyErrorView.show()
+    private fun onEmptySuccess() = with(binding) {
+        shimmerViewContainer.hide()
+        factsRecyclerView.hide()
+        errorView.errorLayout.hide()
+        welcomeView.welcomeLayout.hide()
+        emptyErrorView.emptyErrorLayout.show()
     }
 
-    private fun onError() {
-        shimmerFrameLayout?.hide()
-        factListRecyclerView.hide()
-        emptyErrorView.hide()
-        welcomeView.hide()
-        errorView.show()
+    private fun onError() = with(binding) {
+        shimmerViewContainer.hide()
+        factsRecyclerView.hide()
+        emptyErrorView.emptyErrorLayout.hide()
+        welcomeView.welcomeLayout.hide()
+        errorView.errorLayout.show()
     }
 
-    private fun onUserFirstTime() {
-        shimmerFrameLayout?.hide()
-        factListRecyclerView.hide()
-        emptyErrorView.hide()
-        errorView.hide()
-        welcomeView.show()
-    }
-
-    companion object {
-        private const val SEARCH_SENTENCE = "SEARCH_SENTENCE"
-
-        fun newInstance(searchSentence: String) =
-            FactListFragment()
-                .apply {
-                    arguments = Bundle().apply {
-                        putString(SEARCH_SENTENCE, searchSentence)
-                    }
-                }
+    private fun onUserFirstTime() = with(binding) {
+        shimmerViewContainer.hide()
+        factsRecyclerView.hide()
+        emptyErrorView.emptyErrorLayout.hide()
+        errorView.errorLayout.hide()
+        welcomeView.welcomeLayout.show()
     }
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mariannecunha.search.databinding.TagCloudItemBinding
+import java.util.Locale
 
 class SearchListAdapter(private val onSearchClick: (String) -> Unit) : RecyclerView.Adapter<SearchListAdapter.SearchListViewHolder>() {
 
@@ -42,7 +43,7 @@ class SearchListAdapter(private val onSearchClick: (String) -> Unit) : RecyclerV
 
         fun itemBind(category: String, onSearchClick: (String) -> Unit) {
 
-            binding.firstCategoryTextView.text = category.toUpperCase()
+            binding.firstCategoryTextView.text = category.toUpperCase(Locale.ROOT)
 
             setUpClickCategory(category, onSearchClick)
         }

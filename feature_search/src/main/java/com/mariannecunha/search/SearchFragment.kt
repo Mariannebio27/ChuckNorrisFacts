@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mariannecunha.search.databinding.FragmentSearchBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class SearchFragment : Fragment() {
@@ -24,7 +23,6 @@ class SearchFragment : Fragment() {
         parametersOf({ searchText: String -> onSearchClick(searchText) })
     }
     lateinit var binding: FragmentSearchBinding
-    private var searchText: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +47,6 @@ class SearchFragment : Fragment() {
         super.onResume()
 
         val words = viewModel.getWordList()
-//        searchText = words.subList(0,1).toString()
         searchedWordAdapter.updateWords(words)
     }
 
