@@ -36,7 +36,11 @@ I tried to follow the concepts of Clean Architecture, so I divided the project i
 
 * **app module**: module that is started when user opens the application. It contais the Apllication class which starts dependency injection;
 
-* **presentation module**: where everything related to a View is (fragments, activities, adapters and View Models);
+* **feature_home module**: where everything related to the HomeActivity is;
+
+* **feature_search module**: where everything related to the Search Views is (fragment, adapters and View Model);
+
+* **feature_fact_list module**: where everything related to the Fact List Views is (fragments, adapter and View Model);
 
 * **data module**: the data layer contains all the code necessary to retrieve the data, whether from a local database or a service;
 
@@ -44,12 +48,19 @@ I tried to follow the concepts of Clean Architecture, so I divided the project i
 
 * **core module**: it has some extensions and implementations that are used by the application (ex: SingleLiveData etc);
 
+* **resource module**: it has the common resources that are used by the other modules (values, themes, colors);
+
+* **shared module**: it has the common dependencies (Koin, Navigation component) and staple modules that are used by the other modules (resource, domain, core)
+
 ## Main dependencies
 **Koin** - _dependence injection_
  <p> Library chosen for its simple implementation. As a negative point, there is some loss of performance when compared to other competitors, such as Dagger. There is no significant loss for this application. </p>
 
 **Coroutines** - _dealing with threads and asynchronism_
  <p> Approach suggested by Google and working well with Live Data, makes good use of the device's Threads and Thread Pool, improving application performance. When compared to RxJava, which is its biggest competitor, its positive point is its smaller size and simplicity, its negative point is its error handling which is a little more manual. </p>
+ 
+**Navigation component** - navigation between screens
+<p> Used as a new form of navigation for the application. <p>
 
 **Retrofit** - _HTTP requirements_
  <p> Retrofit is the most widespread library for handling HTTP requests, in addition to being easy to implement. </p>
